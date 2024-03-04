@@ -7,3 +7,4 @@
 2024-03-03 22:53:34 error : phoneNumber must be less than or equal to 11
 2024-03-03 22:53:46 error : Email already exists.
 2024-03-03 22:53:46 error : Validation error
+2024-03-04 00:12:18 error : phoneNumber is a required field

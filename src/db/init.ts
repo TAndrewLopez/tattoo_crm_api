@@ -1,4 +1,4 @@
-import UserModel from "../models/userModel";
+import { UserModel } from "../models";
 import db from "./";
 
 const db_init = async () => {

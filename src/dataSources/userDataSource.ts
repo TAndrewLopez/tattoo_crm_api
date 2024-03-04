@@ -3,8 +3,9 @@ import {
     IUser,
     IUserCreationBody,
     IUserDataSource,
-} from "../interfaces/userInterface";
-import UserModel from "../models/userModel";
+} from "../interfaces";
+import { UserModel } from "../models";
+
 
 class UserDataSource implements IUserDataSource {
     async create(data: IUserCreationBody): Promise<IUser> {

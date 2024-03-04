@@ -1,10 +1,10 @@
 import express, { Request, Response } from "express";
 
-import UserController from "../controllers/userController";
-import UserService from "../services/userService";
-import UserDataSource from "../dataSources/userDataSource";
-import ValidationSchema from "../schemas/useSchema";
+import { UserController } from "../controllers";
+import { UserDataSource } from "../dataSources";
 import { validator } from "../middleware";
+import ValidationSchema from "../schemas/useSchema";
+import { UserService } from "../services";
 
 const createUserRoute = () => {
     const router = express.Router();
@@ -16,6 +16,14 @@ const createUserRoute = () => {
         validator(ValidationSchema.registerSchema),
         (request: Request, response: Response) => {
             return userController.register(request, response);
+        }
+    );
+
+    router.post(
+        "/login",
+        validator(ValidationSchema.loginSchema),
+        (request: Request, response: Response) => {
+            return userController.login(request, response);
         }
     );
 

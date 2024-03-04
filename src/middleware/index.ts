@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { Schema } from "yup";
 
-import { ResponseCode } from "../interfaces/enum/responseCodeEnum";
+import { ResponseCode } from "../interfaces";
 import Utility from "../utils";
 
 

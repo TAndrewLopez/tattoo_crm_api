@@ -21,19 +21,19 @@ app.use(
     ) => {
         try {
             if (err) {
-                response.status(500).json({ status: false, message: (err as TypeError).message })
+                response
+                    .status(500)
+                    .json({ status: false, message: (err as TypeError).message });
             }
-        } catch (error) {
-
-        }
+        } catch (error) { }
     }
 );
 
-app.use('/api/user', UserRouter)
+app.use("/api/user", UserRouter);
 
-app.get('/', (request: Request, response: Response) => {
+app.get("/", (request: Request, response: Response) => {
     response.send(`Welcome to ${process.env.APP_NAME}`);
-})
+});
 
 const PORT = process.env.DB_PORT || 5000;
 

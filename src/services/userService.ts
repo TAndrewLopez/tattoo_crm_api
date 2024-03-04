@@ -3,7 +3,7 @@ import {
     IUser,
     IUserCreationBody,
     IUserDataSource,
-} from "../interfaces/userInterface";
+} from "../interfaces";
 
 class UserService {
     private userDataSource: IUserDataSource;
