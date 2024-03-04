@@ -4,7 +4,7 @@ import db from "../db";
 import { ITattooRequestModel } from "../interfaces";
 
 const TattooRequestModel = db.define<ITattooRequestModel>(
-    "TattooRequestModel",
+    "tattooRequest",
     {
         name: { type: DataTypes.STRING, allowNull: false },
         email: { type: DataTypes.STRING, allowNull: false },
