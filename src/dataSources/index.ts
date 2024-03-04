@@ -1,4 +1,4 @@
-import AppointmentDataSource from "./appointmentDataSource";
+import TattooRequestDataSource from "./tattooRequestDataSource";
 import UserDataSource from "./userDataSource";
 
-export { AppointmentDataSource, UserDataSource }
+export { TattooRequestDataSource, UserDataSource }

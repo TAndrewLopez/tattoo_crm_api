@@ -1,4 +1,4 @@
-import AppointmentService from "./appointmentService";
+import TattooRequestService from "./tattooRequestService";
 import UserService from "./userService";
 
-export { AppointmentService, UserService };
+export { TattooRequestService, UserService };

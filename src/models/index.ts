@@ -1,11 +1,11 @@
 import UserModel from "./userModel";
-import AppointmentModel from "./appointmentModel";
+import TattooRequestModel from "./tattooRequestModel";
 
 // ASSOCIATIONS
-// UserModel.hasMany(AppointmentModel);
-// AppointmentModel.belongsTo(UserModel);
+// UserModel.hasMany(TattooRequestModel);
+// TattooRequestModel.belongsTo(UserModel);
 
 export {
     UserModel,
-    AppointmentModel
+    TattooRequestModel
 }

@@ -5,9 +5,9 @@ export interface IUser {
     email: string;
     password: string;
     phoneNumber: string;
+    role: string;
     accountStatus: string;
     isEmailVerified: string;
-    role: string;
     firstName?: string;
     lastName?: string;
     imageUrl?: string;
@@ -43,6 +43,4 @@ export interface IUserModel extends Model<IUser, IUserCreationBody>, IUser { }
 export interface IUserDataSource {
     create(data: IUserCreationBody): Promise<IUser>;
     fetchOne(query: IFindUserQuery): Promise<IUser | null>;
-    fetchAll(query: IFindUserQuery): Promise<IUser[]>;
-    updateOne(query: IFindUserQuery, data: Partial<IUser>): Promise<void>;
 }

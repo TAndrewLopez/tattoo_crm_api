@@ -3,7 +3,7 @@ import express, { Request, Response } from "express";
 import { UserController } from "../controllers";
 import { UserDataSource } from "../dataSources";
 import { validator } from "../middleware";
-import ValidationSchema from "../schemas/useSchema";
+import Schemas from "../schemas";
 import { UserService } from "../services";
 
 const createUserRoute = () => {
@@ -13,7 +13,7 @@ const createUserRoute = () => {
 
     router.post(
         "/register",
-        validator(ValidationSchema.registerSchema),
+        validator(Schemas.UserSchema.RegisterSchema),
         (request: Request, response: Response) => {
             return userController.register(request, response);
         }
@@ -21,7 +21,7 @@ const createUserRoute = () => {
 
     router.post(
         "/login",
-        validator(ValidationSchema.loginSchema),
+        validator(Schemas.UserSchema.LoginSchema),
         (request: Request, response: Response) => {
             return userController.login(request, response);
         }

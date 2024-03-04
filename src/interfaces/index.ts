@@ -7,23 +7,23 @@ import { AccountStatus } from "./enum/userEnum";
 
 // QUERY INTERFACES
 import { IFindUserQuery } from "./userInterface";
-import { IFindAppointmentQuery } from "./appointmentInterface";
+import { IFindTattooRequestQuery } from "./tattooRequestInterface";
 
 // CREATION INTERFACES
 import { IUserCreationBody } from "./userInterface";
-import { IAppointmentCreationBody } from "./appointmentInterface";
+import { ITattooRequestCreationBody } from "./tattooRequestInterface";
 
 // DB MODELS
 import { IUserModel } from "./userInterface";
-import { IAppointmentModel } from "./appointmentInterface";
+import { ITattooRequestModel } from "./tattooRequestInterface";
 
 // DATA SOURCES
 import { IUserDataSource } from "./userInterface";
-import { IAppointmentDataSource } from "./appointmentInterface";
+import { ITattooRequestDataSource } from "./tattooRequestInterface";
 
 // INTERFACES
 import { IUser } from "./userInterface";
-import { IAppointment } from "./appointmentInterface";
+import { ITattooRequest } from "./tattooRequestInterface";
 
 
 export {
@@ -33,13 +33,13 @@ export {
     UserRole,
     AccountStatus,
     IUser,
-    IAppointment,
+    ITattooRequest,
     IFindUserQuery,
-    IFindAppointmentQuery,
+    IFindTattooRequestQuery,
     IUserCreationBody,
-    IAppointmentCreationBody,
+    ITattooRequestCreationBody,
     IUserModel,
-    IAppointmentModel,
+    ITattooRequestModel,
     IUserDataSource,
-    IAppointmentDataSource,
+    ITattooRequestDataSource,
 };

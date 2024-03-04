@@ -31,7 +31,7 @@ class UserController {
                 role: UserRole.CUSTOMER,
             } as IUserCreationBody;
 
-            const userExists = await this.userService.fetchOneByField({
+            const userExists = await this.userService.fetchRecordByField({
                 email: newUser.email,
             });
 
@@ -43,7 +43,7 @@ class UserController {
                 );
             }
 
-            const user = await this.userService.createUser(newUser);
+            const user = await this.userService.createRecord(newUser);
             user.password = "";
 
             return Utility.handleSuccess(
@@ -64,7 +64,7 @@ class UserController {
     async login(request: Request, response: Response) {
         try {
             const params = { ...request.body };
-            const user = await this.userService.fetchOneByField({
+            const user = await this.userService.fetchRecordByField({
                 email: params.email,
             });
 
@@ -94,6 +94,8 @@ class UserController {
             const token = JWT.sign(
                 {
                     id: user.id,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
                     email: user.email,
                     role: user.role,
                 },

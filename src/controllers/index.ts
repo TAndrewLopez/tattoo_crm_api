@@ -1,4 +1,4 @@
-import AppointmentController from "./appointmentController";
+import TattooRequestController from "./tattooRequestController";
 import UserController from "./userController";
 
-export { AppointmentController, UserController };
+export { TattooRequestController, UserController };
