@@ -20,6 +20,10 @@ const createUserRoutes = () => {
         return userController.login(request, response);
     });
 
+    router.post('/forgotPassword', async (request: Request, response: Response) => {
+        return await userController.forgotPassword(request, response);
+    })
+
     return router;
 };
 

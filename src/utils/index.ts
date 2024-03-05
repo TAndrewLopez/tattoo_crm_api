@@ -33,7 +33,7 @@ const handleSuccess = (
     data = {},
     statusCode: number = 200
 ) => {
-    return response.status(statusCode).json({ status: true, data: { ...data } });
+    return response.status(statusCode).json({ status: true, message, data: { ...data } });
 };
 
 const generateCode = (num: number = 15) => {
