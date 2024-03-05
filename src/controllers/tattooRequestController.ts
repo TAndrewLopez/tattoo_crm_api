@@ -82,6 +82,25 @@ class TattooRequestController {
             );
         }
     }
+
+    async fetchAllRecords(request: Request, response: Response) {
+        try {
+            const tattooRequests = await this.tattooRequestService.fetchAllRecords()
+
+            return Utility.handleSuccess(
+                response,
+                "Resource available",
+                { tattooRequests },
+                ResponseCode.SUCCESS
+            );
+        } catch (error) {
+            return Utility.handleError(
+                response,
+                (error as TypeError).message,
+                ResponseCode.SERVER_ERROR
+            );
+        }
+    }
 }
 
 export default TattooRequestController;

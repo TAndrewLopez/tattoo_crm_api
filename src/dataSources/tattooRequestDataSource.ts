@@ -16,6 +16,10 @@ class TattooRequestDataSource implements ITattooRequestDataSource {
     ): Promise<ITattooRequest | null> {
         return await TattooRequestModel.findOne(query);
     }
+
+    async fetchAll(query?: IFindTattooRequestQuery): Promise<ITattooRequest[]> {
+        return await TattooRequestModel.findAll(query);
+    }
 }
 
 export default TattooRequestDataSource;

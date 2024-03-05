@@ -12,22 +12,23 @@ class TattooRequestService {
         this.tattooRequestDataSource = _tattooRequestDataSource;
     }
 
-    async createRecord(
-        data: ITattooRequestCreationBody
-    ): Promise<ITattooRequest> {
-        return this.tattooRequestDataSource.create(data);
+    async createRecord(data: ITattooRequestCreationBody): Promise<ITattooRequest> {
+        return await this.tattooRequestDataSource.create(data);
     }
 
-    async fetchRecordByField(
-        record: Partial<ITattooRequest>
-    ): Promise<ITattooRequest | null> {
+    async fetchRecordByField(record: Partial<ITattooRequest>): Promise<ITattooRequest | null> {
         const query = {
             where: {
                 ...record,
             },
         } as IFindTattooRequestQuery;
 
-        return this.tattooRequestDataSource.fetchOne(query);
+        return await this.tattooRequestDataSource.fetchOne(query);
+    }
+
+    async fetchAllRecords(record?: Partial<ITattooRequest>): Promise<ITattooRequest[]> {
+        const query = { where: { ...record } } as IFindTattooRequestQuery;
+        return await this.tattooRequestDataSource.fetchAll(query);
     }
 }
 

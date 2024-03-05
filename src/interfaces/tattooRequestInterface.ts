@@ -3,7 +3,6 @@ import { Model, Optional } from "sequelize";
 export interface ITattooRequest {
     id?: number;
     userId?: number;
-
     name: string;
     email: string;
     phoneNumber: string;
@@ -48,4 +47,5 @@ export interface ITattooRequestModel
 export interface ITattooRequestDataSource {
     create(data: ITattooRequestCreationBody): Promise<ITattooRequest>;
     fetchOne(query: IFindTattooRequestQuery): Promise<ITattooRequest | null>;
+    fetchAll(query?: IFindTattooRequestQuery): Promise<ITattooRequest[]>
 }

@@ -9,14 +9,16 @@ import {
     ResponseCode,
     UserRole,
 } from "../interfaces";
-import { UserService } from "../services";
+import { TokenService, UserService } from "../services";
 import Utility from "../utils";
 
 class UserController {
     private userService: UserService;
+    private tokenService: TokenService;
 
-    constructor(_userService: UserService) {
+    constructor(_userService: UserService, _tokenService: TokenService) {
         this.userService = _userService;
+        this.tokenService = _tokenService;
     }
 
     async register(request: Request, response: Response) {
@@ -111,6 +113,56 @@ class UserController {
                 { user, token },
                 ResponseCode.SUCCESS
             );
+        } catch (error) {
+            return Utility.handleError(
+                response,
+                (error as TypeError).message,
+                ResponseCode.SERVER_ERROR
+            );
+        }
+    }
+
+    async forgotPassword(request: Request, response: Response) {
+        try {
+            const params = { ...request.body };
+            const user = await this.userService.fetchRecordByField({
+                email: params.email,
+            })
+
+            if (!user) {
+                return Utility.handleError(
+                    response,
+                    "Invalid Credentials.",
+                    ResponseCode.NOT_FOUND
+                )
+            }
+
+            const token = await this.tokenService.createForgotPasswordToken(user.email);
+            // TODO: IMPLEMENT EMAIL SERVICE
+
+            return Utility.handleSuccess(
+                response,
+                "Forgot password reset code has been emailed.",
+                {},
+                ResponseCode.SUCCESS
+            )
+        } catch (error) {
+            return Utility.handleError(
+                response,
+                (error as TypeError).message,
+                ResponseCode.SERVER_ERROR
+            );
+        }
+    }
+
+    async resetPassword(request: Request, response: Response) {
+        try {
+            return Utility.handleSuccess(
+                response,
+                "Things happened.",
+                {},
+                ResponseCode.SUCCESS
+            )
         } catch (error) {
             return Utility.handleError(
                 response,

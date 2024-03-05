@@ -2,8 +2,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express, { NextFunction, Request, Response } from "express";
 import db_init from "./src/db/init";
-import UserRouter from "./src/routes/userRouter";
-import tattooRequestRouter from "./src/routes/tattooRequestRouter";
+import UserRouter from "./src/routes/userRoutes";
+import TattooRequestRouter from "./src/routes/tattooRequestRoutes";
 
 const app = express();
 
@@ -31,7 +31,7 @@ app.use(
 );
 
 app.use("/api/user", UserRouter);
-app.use("/api/tattooRequest", tattooRequestRouter);
+app.use("/api/tattooRequest", TattooRequestRouter);
 
 app.get("/", (request: Request, response: Response) => {
     response.send(`Welcome to ${process.env.APP_NAME}`);

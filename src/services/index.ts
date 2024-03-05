@@ -1,4 +1,5 @@
+import TokenService from "./tokenService";
 import TattooRequestService from "./tattooRequestService";
 import UserService from "./userService";
 
-export { TattooRequestService, UserService };
+export { TokenService, TattooRequestService, UserService };

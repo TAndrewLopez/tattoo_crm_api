@@ -13,7 +13,7 @@ class UserService {
     }
 
     async createRecord(data: IUserCreationBody): Promise<IUser> {
-        return this.userDataSource.create(data);
+        return await this.userDataSource.create(data);
     }
 
     async fetchRecordByField(record: Partial<IUser>): Promise<IUser | null> {
@@ -23,7 +23,7 @@ class UserService {
             },
         } as IFindUserQuery;
 
-        return this.userDataSource.fetchOne(query);
+        return await this.userDataSource.fetchOne(query);
     }
 }
 
