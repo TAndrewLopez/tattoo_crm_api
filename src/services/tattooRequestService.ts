@@ -5,17 +5,17 @@ import {
     ITattooRequestDataSource,
 } from "../interfaces";
 
-class AppointmentService {
-    private appointmentDataSource: ITattooRequestDataSource;
+class TattooRequestService {
+    private tattooRequestDataSource: ITattooRequestDataSource;
 
-    constructor(_appointmentDataSource: ITattooRequestDataSource) {
-        this.appointmentDataSource = _appointmentDataSource;
+    constructor(_tattooRequestDataSource: ITattooRequestDataSource) {
+        this.tattooRequestDataSource = _tattooRequestDataSource;
     }
 
     async createRecord(
         data: ITattooRequestCreationBody
     ): Promise<ITattooRequest> {
-        return this.appointmentDataSource.create(data);
+        return this.tattooRequestDataSource.create(data);
     }
 
     async fetchRecordByField(
@@ -27,8 +27,8 @@ class AppointmentService {
             },
         } as IFindTattooRequestQuery;
 
-        return this.appointmentDataSource.fetchOne(query);
+        return this.tattooRequestDataSource.fetchOne(query);
     }
 }
 
-export default AppointmentService;
+export default TattooRequestService;

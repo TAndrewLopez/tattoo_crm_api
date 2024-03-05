@@ -36,7 +36,7 @@ class UserController {
             });
 
             if (userExists) {
-                Utility.handleError(
+                return Utility.handleError(
                     response,
                     "Email already exists.",
                     ResponseCode.ALREADY_EXISTS

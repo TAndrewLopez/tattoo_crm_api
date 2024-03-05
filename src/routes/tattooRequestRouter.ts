@@ -6,7 +6,7 @@ import { validator } from "../middleware";
 import Validations from "../schemas";
 import { TattooRequestService } from "../services";
 
-const createAppointmentRoute = () => {
+const createTattooRequestRoute = () => {
     const router = express.Router();
     const tattooRequestService = new TattooRequestService(
         new TattooRequestDataSource()
@@ -15,15 +15,22 @@ const createAppointmentRoute = () => {
         tattooRequestService
     );
 
+    router.get(
+        "/:id",
+        (request: Request, response: Response) => {
+            return tattooRequestController.fetchRecordById(request, response);
+        }
+    );
+
     router.post(
         "/create",
         validator(Validations.TattooRequestSchema.NewTattooRequestSchema),
         (request: Request, response: Response) => {
-            return tattooRequestController.createNewRequest(request, response);
+            return tattooRequestController.createNewRecord(request, response);
         }
     );
 
     return router;
 };
 
-export default createAppointmentRoute();
+export default createTattooRequestRoute();

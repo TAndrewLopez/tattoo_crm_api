@@ -4,15 +4,14 @@ import { ITattooRequestCreationBody, ResponseCode } from "../interfaces";
 import { TattooRequestService } from "../services";
 import Utility from "../utils";
 
-
 class TattooRequestController {
     private tattooRequestService: TattooRequestService;
 
     constructor(_tattooRequestService: TattooRequestService) {
-        this.tattooRequestService = _tattooRequestService
+        this.tattooRequestService = _tattooRequestService;
     }
 
-    async createNewRequest(request: Request, response: Response) {
+    async createNewRecord(request: Request, response: Response) {
         try {
             const params = { ...request.body };
             const newTattooRequest = {
@@ -27,31 +26,62 @@ class TattooRequestController {
                 description: params.description,
             } as ITattooRequestCreationBody;
 
-            const tattooRequest = await this.tattooRequestService.createRecord(newTattooRequest);
+            const tattooRequest = await this.tattooRequestService.createRecord(
+                newTattooRequest
+            );
 
             if (!tattooRequest) {
-                Utility.handleError(
+                return Utility.handleError(
                     response,
                     "Something went wrong creating tattoo request.",
                     ResponseCode.BAD_REQUEST
                 );
             }
 
-            Utility.handleSuccess(
+            return Utility.handleSuccess(
                 response,
                 "Appointment created successfully.",
                 { tattooRequest },
                 ResponseCode.SUCCESS
             );
         } catch (error) {
-            Utility.handleError(
+            return Utility.handleError(
                 response,
-                "Email already exists.",
-                ResponseCode.ALREADY_EXISTS
+                (error as TypeError).message,
+                ResponseCode.SERVER_ERROR
             );
         }
     }
 
+    async fetchRecordById(request: Request, response: Response) {
+        try {
+            const params = { ...request.params };
+            const tattooRequest = await this.tattooRequestService.fetchRecordByField({
+                id: parseInt(params.id),
+            });
+
+            if (!tattooRequest) {
+                return Utility.handleError(
+                    response,
+                    `Resource with ID: ${params.id} was unavailable.`,
+                    ResponseCode.NOT_FOUND
+                );
+            }
+
+            return Utility.handleSuccess(
+                response,
+                "Resource available",
+                { tattooRequest },
+                ResponseCode.SUCCESS
+            );
+        } catch (error) {
+            return Utility.handleError(
+                response,
+                (error as TypeError).message,
+                ResponseCode.SERVER_ERROR
+            );
+        }
+    }
 }
 
 export default TattooRequestController;

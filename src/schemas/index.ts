@@ -1,18 +1,18 @@
 import { RegisterSchema, LoginSchema } from "./userSchema";
-import { NewTattooRequestSchema } from './tattooRequestSchema'
+import { NewTattooRequestSchema } from "./tattooRequestSchema";
 
 const UserSchema = {
     LoginSchema,
-    RegisterSchema
-}
+    RegisterSchema,
+};
 
 const TattooRequestSchema = {
-    NewTattooRequestSchema
-}
+    NewTattooRequestSchema,
+};
 
 const Schemas = {
+    TattooRequestSchema,
     UserSchema,
-    TattooRequestSchema
-}
+};
 
 export default Schemas;
